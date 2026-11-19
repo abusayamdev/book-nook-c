@@ -80,10 +80,13 @@ export default function Footer() {
             </h3>
 
             <div className="mt-5 space-y-4">
-              <p className="flex items-start gap-3 text-sm leading-6 text-muted-foreground">
+              <a
+                href="mailto:hello@booknook.com"
+                className="flex items-start gap-3 text-sm leading-6 text-muted-foreground transition-colors hover:text-primary"
+              >
                 <Mail size={17} className="mt-1 shrink-0 text-primary" />
                 hello@booknook.com
-              </p>
+              </a>
 
               <p className="flex items-start gap-3 text-sm leading-6 text-muted-foreground">
                 <MapPin size={17} className="mt-1 shrink-0 text-primary" />A

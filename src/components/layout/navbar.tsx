@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import {
   BookOpen,
   ChevronDown,
-  UserRound,
   UserCircle,
   Library,
   BookPlus,
