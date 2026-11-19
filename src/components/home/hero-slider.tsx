@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
@@ -36,6 +37,36 @@ const slides = [
 ];
 
 export default function HeroSlider() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Render a stable placeholder during server rendering.
+  if (!mounted) {
+    return (
+      <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6">
+        <div className="flex min-h-[430px] items-center rounded-3xl bg-[#244C3A] px-8 py-16 text-white md:px-16">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold tracking-[0.25em] text-[#D8C8A8]">
+              WELCOME TO BOOKNOOK
+            </p>
+
+            <h1 className="mt-6 font-serif text-5xl leading-tight md:text-6xl">
+              Discover Stories That Stay With You.
+            </h1>
+
+            <p className="mt-6 max-w-xl leading-8 text-white/75">
+              Explore inspiring books, timeless classics and stories waiting to
+              be discovered.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6">
       <Swiper
@@ -49,8 +80,8 @@ export default function HeroSlider() {
         pagination={{ clickable: true }}
         className="overflow-hidden rounded-3xl"
       >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
+        {slides.map((slide) => (
+          <SwiperSlide key={slide.eyebrow}>
             <div
               className={`relative flex min-h-[430px] items-center overflow-hidden ${slide.background} px-8 py-16 text-white md:px-16`}
             >
@@ -83,7 +114,9 @@ export default function HeroSlider() {
                 <div className="flex h-64 w-44 items-center justify-center rounded-r-xl border-l-8 border-[#C5A46D] bg-white/10 p-5 shadow-2xl backdrop-blur-sm">
                   <div className="text-center">
                     <span className="text-5xl">📖</span>
+
                     <p className="mt-5 font-serif text-3xl">BookNook</p>
+
                     <p className="mt-2 text-xs tracking-widest text-white/70">
                       STORIES LIVE HERE
                     </p>
